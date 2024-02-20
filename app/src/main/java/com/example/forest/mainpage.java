@@ -9,15 +9,24 @@ import java.util.ArrayList;
 import java.util.List;
 import com.example.forest.ReforestationEvent;
 import com.example.forest.ReforestationEventsAdapter;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class mainpage extends AppCompatActivity implements ReforestationEventsAdapter.OnEventClickListener {
 
     private List<ReforestationEvent> eventList;
 
+    private FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mainpage);
+        mAuth = FirebaseAuth.getInstance();
+
+        FirebaseUser user = mAuth.getCurrentUser();
+        Toast.makeText(getApplicationContext(),user.getDisplayName().toString(),Toast.LENGTH_SHORT).show();
+
+
 
         // Create a list of reforestation events
         eventList = new ArrayList<>();
