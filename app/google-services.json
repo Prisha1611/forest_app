@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "880071811979",
+    "project_id": "forest-3c437",
+    "storage_bucket": "forest-3c437.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:880071811979:android:1b2852d66c99db3ab4c58e",
+        "android_client_info": {
+          "package_name": "com.example.forest"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBvkAIk9wHVlYfFg-HuKI8u4gKiTkbfSo4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
