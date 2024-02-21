@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">forest</string>
+    <string name="uploaded_image">Uploaded Image</string>
+
 </resources>
