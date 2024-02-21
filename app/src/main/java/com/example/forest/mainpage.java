@@ -1,5 +1,6 @@
 package com.example.forest;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
@@ -35,7 +36,20 @@ public class mainpage extends AppCompatActivity implements ReforestationEventsAd
 
     @Override
     public void onEventClick(int position) {
-        // Handle event selection here
-        Toast.makeText(this, "Event selected: " + eventList.get(position).getEventName(), Toast.LENGTH_SHORT).show();
+        Intent intent;
+        switch (position) {
+            case 0: // For "City Park Tree Planting"
+                intent = new Intent(getApplicationContext(), event1.class);
+                break;
+            case 1: // For "Neighborhood Reforestation"
+                intent = new Intent(getApplicationContext(), event2.class);
+                break;
+            default:
+                // Default case, can redirect to a general activity or handle error
+                intent = new Intent(getApplicationContext(), eventpage.class);
+                break;
+        }
+
+        startActivity(intent);
     }
 }
