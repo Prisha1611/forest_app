@@ -13,6 +13,15 @@
         android:theme="@style/Theme.Forest"
         tools:targetApi="34">
         <activity
+            android:name=".event2"
+            android:exported="false" />
+        <activity
+            android:name=".event1"
+            android:exported="false" />
+        <activity
+            android:name=".eventpage"
+            android:exported="false" />
+        <activity
             android:name=".mainpage"
             android:exported="false" />
         <activity
