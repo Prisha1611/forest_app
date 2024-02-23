@@ -100,14 +100,14 @@
         app:layout_constraintTop_toBottomOf="@+id/passwordLayout">
 
         <RadioButton
-            android:id="@+id/radioButtonNGO"
+            android:id="@+id/radioButtonNGOLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="NGO"
             android:textSize="16sp" />
 
         <RadioButton
-            android:id="@+id/radioButtonVolunteer"
+            android:id="@+id/radioButtonVolunteerLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Volunteer"

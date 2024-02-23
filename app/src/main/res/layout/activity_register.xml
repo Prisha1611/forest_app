@@ -29,6 +29,37 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+
+    <LinearLayout
+        android:id="@+id/studentIdLayout"
+        android:layout_width="330dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/email" />
+
+        <EditText
+            android:id="@+id/emailSignup"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:background="#FFFFFF"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:padding="8dp" />
+
+    </LinearLayout>
+
     <LinearLayout
         android:id="@+id/nameLayout"
         android:layout_width="330dp"
@@ -116,40 +147,38 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/studentIdLayout"
-        android:layout_width="330dp"
+
+    <RadioGroup
+        android:id="@+id/userTypeGroupSignup"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="16dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
+        app:layout_constraintTop_toBottomOf="@+id/confirmPasswordLayout">
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:src="@drawable/email" />
-
-        <EditText
-            android:id="@+id/emailSignup"
-            android:layout_width="350dp"
+        <RadioButton
+            android:id="@+id/radioButtonNGOSignup"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_weight="1"
-            android:background="#FFFFFF"
-            android:hint="Email"
-            android:inputType="textEmailAddress"
-            android:padding="8dp" />
+            android:text="NGO"
+            android:textSize="16sp" />
 
-    </LinearLayout>
+        <RadioButton
+            android:id="@+id/radioButtonVolunteerSignup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Volunteer"
+            android:textSize="16sp" />
+
+    </RadioGroup>
 
     <Button
         android:id="@+id/registerButtonSignup"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="35dp"
         android:backgroundTint="#30b319"
         android:elevation="4dp"
         android:paddingStart="16dp"
@@ -163,6 +192,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/confirmPasswordLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/userTypeGroupSignup" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
