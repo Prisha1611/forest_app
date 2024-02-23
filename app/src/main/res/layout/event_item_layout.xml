@@ -6,7 +6,7 @@
     android:padding="8dp">
 
     <TextView
-        android:id="@+id/eventName"
+        android:id="@+id/eventNameText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:textSize="16sp"
@@ -16,21 +16,34 @@
         app:layout_constraintEnd_toEndOf="parent"/>
 
     <TextView
-        android:id="@+id/eventDate"
+        android:id="@+id/eventDateText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/eventName"
+        app:layout_constraintTop_toBottomOf="@id/eventNameText"
         app:layout_constraintEnd_toEndOf="parent"/>
 
     <TextView
-        android:id="@+id/eventLocation"
+        android:id="@+id/eventLocationText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/eventDate"
+        app:layout_constraintTop_toBottomOf="@id/eventDateText"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/eventImageUrl"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/eventLocationText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
