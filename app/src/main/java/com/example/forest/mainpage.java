@@ -12,8 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
-import com.example.forest.ReforestationEvent;
-import com.example.forest.ReforestationEventsAdapter;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -53,12 +52,13 @@ public class mainpage extends AppCompatActivity implements ReforestationEventsAd
                                 String event_location = document.getData().get("eventLocation").toString();
                                 String event_date = document.getData().get("eventDate").toString();
                                 Uri eventImage = Uri.parse(document.getData().get("eventImage").toString());
+                                String eventOrganizer = document.getData().get("eventOrganizer").toString();
                                 Log.d("name", event_name, task.getException());
                                 Log.d("date", event_date, task.getException());
                                 Log.d("location", event_location, task.getException());
                                 Log.d("uri", String.valueOf(eventImage), task.getException());
 
-                                eventList.add(new ReforestationEvent(event_name,event_date,event_location,eventImage));
+                                eventList.add(new ReforestationEvent(event_name,event_date,event_location,eventImage,eventOrganizer));
 
 //                                eventList.add(new ReforestationEvent(document.getData().get("eventName").toString(),document.getData().get("eventDate").toString(),document.getData().get("eventLocation").toString(), Uri.parse( document.getData().get("eventImage").toString())));
                             }
@@ -94,7 +94,7 @@ public class mainpage extends AppCompatActivity implements ReforestationEventsAd
         Intent intent;
         switch (position) {
             case 0: // For "City Park Tree Planting"
-                intent = new Intent(getApplicationContext(), event1.class);
+                intent = new Intent(getApplicationContext(), addEvent.class);
                 break;
             case 1: // For "Neighborhood Reforestation"
                 intent = new Intent(getApplicationContext(), event2.class);

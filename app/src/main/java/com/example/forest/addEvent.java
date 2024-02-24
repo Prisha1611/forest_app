@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
@@ -25,14 +26,16 @@ import com.google.firebase.storage.UploadTask;
 import java.util.HashMap;
 import java.util.Map;
 
-public class event1 extends AppCompatActivity {
+public class addEvent extends AppCompatActivity {
     private static final int PICK_IMAGE_REQUEST = 1;
     private FirebaseStorage storage;
     private StorageReference storageRef;
     private ImageView imageView;
     private EditText eventName, eventDate, eventLocation;
     private Button submitEvent;
-    Uri imageUri;
+    private Uri imageUri;
+    private FirebaseAuth mAuth;
+
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     @Override
@@ -44,6 +47,7 @@ public class event1 extends AppCompatActivity {
         eventDate = findViewById(R.id.eventDate);
         eventLocation = findViewById(R.id.eventLocation);
         submitEvent = findViewById(R.id.submitEvent);
+        mAuth = FirebaseAuth.getInstance();
 
         // Initialize Firebase Storage
         storage = FirebaseStorage.getInstance();
@@ -118,6 +122,8 @@ public class event1 extends AppCompatActivity {
         eventDetail.put("eventName", name);
         eventDetail.put("eventLocation", location);
         eventDetail.put("eventDate", date);
+        eventDetail.put("eventOrganizer", mAuth.getCurrentUser().getDisplayName());
+        eventDetail.put("eventOrganizerID",mAuth.getCurrentUser().getUid());
 
         // Get a reference to store file at "photos/<FILENAME>"
         StorageReference fileRef = storageRef
@@ -129,7 +135,7 @@ public class event1 extends AppCompatActivity {
             @Override
             public void onFailure(@NonNull Exception exception) {
                 // Handle unsuccessful uploads
-                Toast.makeText(event1.this, "Upload failed: " + exception.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(addEvent.this, "Upload failed: " + exception.getMessage(), Toast.LENGTH_SHORT).show();
             }
         }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
@@ -139,23 +145,63 @@ public class event1 extends AppCompatActivity {
                     @Override
                     public void onSuccess(Uri uri) {
                         // Here you can use the download URL for further operations
-                        Toast.makeText(event1.this, "Upload successful", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(addEvent.this, "Upload successful", Toast.LENGTH_SHORT).show();
                         eventDetail.put("eventImage", uri.toString());
 
-                        db.collection("Events")
+                        db.collection("users")
+                                .document(mAuth.getCurrentUser().getUid())
+                                .collection("Our Events")
+
                                 .add(eventDetail)
                                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                                     @Override
                                     public void onSuccess(DocumentReference documentReference) {
-                                        Toast.makeText(event1.this, "Event adding successful", Toast.LENGTH_SHORT).show();
+
+                                        Toast.makeText(addEvent.this, "Event adding successful to users document", Toast.LENGTH_SHORT).show();
                                         Log.d("TAG", "DocumentSnapshot added with ID: " + documentReference.getId());
+                                    }
+                                })
+//                                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+//                                    @Override
+//                                    public void onSuccess(Void unused) {
+//
+//                                        Toast.makeText(addEvent.this, "Event adding successful", Toast.LENGTH_SHORT).show();
+////                                        Log.d("TAG", "DocumentSnapshot added with ID: " + documentReference.getId());
+//                                    }
+//                                })
+//                                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+//                                    @Override
+//                                    public void onSuccess(DocumentReference documentReference) {
+//                                        Toast.makeText(addEvent.this, "Event adding successful", Toast.LENGTH_SHORT).show();
+//                                        Log.d("TAG", "DocumentSnapshot added with ID: " + documentReference.getId());
+//                                    }
+//                                })
+                                .addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Toast.makeText(addEvent.this, "Event not added to users document", Toast.LENGTH_SHORT).show();
+                                        Log.w("TAG", "Error adding document", e);
+                                    }
+                                });
+
+                        db.collection("Events")
+                                .document()
+                                .set(eventDetail)
+                                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void unused) {
+//
+                                        Toast.makeText(addEvent.this, "Event adding successful to events document", Toast.LENGTH_SHORT).show();
+//                                        Log.d("TAG", "DocumentSnapshot added with ID: " + documentReference.getId());
+
                                     }
                                 })
                                 .addOnFailureListener(new OnFailureListener() {
                                     @Override
                                     public void onFailure(@NonNull Exception e) {
-                                        Toast.makeText(event1.this, "Event not added", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(addEvent.this, "Event not added to events document", Toast.LENGTH_SHORT).show();
                                         Log.w("TAG", "Error adding document", e);
+
                                     }
                                 });
                     }

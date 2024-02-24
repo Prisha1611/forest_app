@@ -101,7 +101,7 @@ public class login extends AppCompatActivity {
                                                     intent = new Intent(getApplicationContext(), mainpage.class);
                                                 }
                                                 else{
-                                                    intent = new Intent(getApplicationContext(), event1.class);
+                                                    intent = new Intent(getApplicationContext(), addEvent.class);
                                                 }
                                                 startActivity(intent);
                                             }

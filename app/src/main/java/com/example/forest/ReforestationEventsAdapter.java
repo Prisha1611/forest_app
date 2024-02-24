@@ -40,7 +40,7 @@ public class ReforestationEventsAdapter extends RecyclerView.Adapter<Reforestati
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView eventName, eventDate, eventLocation;
+        TextView eventName, eventDate, eventLocation, evnetOrganizer;
         ImageView eventImage;
 
         public ViewHolder(View itemView) {
@@ -48,6 +48,7 @@ public class ReforestationEventsAdapter extends RecyclerView.Adapter<Reforestati
             eventName = itemView.findViewById(R.id.eventNameText);
             eventDate = itemView.findViewById(R.id.eventDateText);
             eventLocation = itemView.findViewById(R.id.eventLocationText);
+            evnetOrganizer = itemView.findViewById(R.id.eventOrganizerText);
             eventImage = (ImageView) itemView.findViewById(R.id.eventImageUrl);
             itemView.setOnClickListener(this);
         }
@@ -56,6 +57,7 @@ public class ReforestationEventsAdapter extends RecyclerView.Adapter<Reforestati
             eventName.setText(event.getEventName());
             eventDate.setText(event.getEventDate());
             eventLocation.setText(event.getEventLocation());
+            evnetOrganizer.setText(event.getEventOrganizer());
 //            eventImage.setImageURI(event.getEventImage());
             Glide.with(eventImage)
                     .load(event.getEventImage())

@@ -8,12 +8,14 @@ public class ReforestationEvent {
     private String eventLocation;
 
     private Uri eventImage;
+    private String eventOrganizer;
 
-    public ReforestationEvent(String eventName, String eventDate, String eventLocation, Uri eventImage) {
+    public ReforestationEvent(String eventName, String eventDate, String eventLocation, Uri eventImage, String eventOrganizer) {
         this.eventName = eventName;
         this.eventDate = eventDate;
         this.eventLocation = eventLocation;
         this.eventImage = eventImage;
+        this.eventOrganizer = eventOrganizer;
     }
 
     // Getters
@@ -30,6 +32,7 @@ public class ReforestationEvent {
     }
 
     public Uri getEventImage() { return eventImage;}
+    public String getEventOrganizer() {return  eventOrganizer;};
 
     // Setters can be added if needed
 }

@@ -36,13 +36,25 @@
         app:layout_constraintTop_toBottomOf="@id/eventDateText"
         app:layout_constraintVertical_bias="0.0" />
 
+    <TextView
+        android:id="@+id/eventOrganizerText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/eventLocationText"
+        app:layout_constraintVertical_bias="0.0" />
+
     <ImageView
         android:id="@+id/eventImageUrl"
         android:layout_width="0dp"
         android:layout_height="100dp"
         android:layout_marginTop="4dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/eventLocationText"
+        app:layout_constraintTop_toBottomOf="@id/eventOrganizerText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
