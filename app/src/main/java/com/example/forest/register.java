@@ -32,11 +32,12 @@ import java.util.regex.Pattern;
 
 public class register extends AppCompatActivity {
     private FirebaseAuth mAuth;
-    private EditText email, name,pass1,pass2;
+    private EditText email, name, pass1, pass2;
     private Button register;
 
     private RadioGroup userTypeGroup;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
@@ -71,44 +72,43 @@ public class register extends AppCompatActivity {
 //                }
 //                Toast.makeText(getApplicationContext(), (CharSequence) selectedRadioButton, Toast.LENGTH_SHORT).show();
                 String userType;
-                if(selectedRadioButton.getId() == R.id.radioButtonVolunteerSignup){
+                if (selectedRadioButton.getId() == R.id.radioButtonVolunteerSignup) {
                     userType = "Volunteer";
-                }
-                else if(selectedRadioButton.getId() == R.id.radioButtonNGOSignup){
+                } else if (selectedRadioButton.getId() == R.id.radioButtonNGOSignup) {
                     userType = "NGO";
-                }
-                else{
+                } else if (selectedRadioButton.getId() == R.id.radioButtonBusinessSignup) {
+                    userType = "Business";
+                } else {
                     // Handle the case where neither is selected or an unexpected value is encountered
                     Toast.makeText(getApplicationContext(), "Please select a user type", Toast.LENGTH_SHORT).show();
                     return; // Exit the method early if there's no selection
                 }
 
                 if (!emailString.matches(emailPattern)) {
-                    Toast.makeText(getApplicationContext(),"Invalid email address", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Invalid email address", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if(pass1String.equals(pass2String)){
+                if (pass1String.equals(pass2String)) {
 
-                    if(!isValidPassword(pass1String)){
+                    if (!isValidPassword(pass1String)) {
                         Toast.makeText(getApplicationContext(), "Invalid Password", Toast.LENGTH_SHORT).show();
                         pass1.setError("nooooooooooooo");
+                    } else {
+                        signupUser(emailString, pass1String, nameString, userType);
                     }
-                    else{
-                        signupUser(emailString,pass1String,nameString,userType);
-                    }
-                }else{
+                } else {
                     Toast.makeText(getApplicationContext(), "Password do not match", Toast.LENGTH_SHORT).show();
                 }
             }
         });
     }
 
-    private void signupUser(String email, String password,String name, String userType) {
+    private void signupUser(String email, String password, String name, String userType) {
         Map<String, Object> userDetail = new HashMap<>();
 
-        userDetail.put("Email",email);
-        userDetail.put("Name",name);
-        userDetail.put("Type",userType);
+        userDetail.put("Email", email);
+        userDetail.put("Name", name);
+        userDetail.put("Type", userType);
 
         UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
                 .setDisplayName(name)
@@ -132,7 +132,7 @@ public class register extends AppCompatActivity {
                                                 Log.d("UPDATING USER PROFILE", "User profile updated.");
                                                 Toast.makeText(getApplicationContext(), "Account updated", Toast.LENGTH_SHORT).show();
 //                                                val = true;
-                                                Toast.makeText(getApplicationContext(),user.getDisplayName().toString(),Toast.LENGTH_SHORT).show();
+                                                Toast.makeText(getApplicationContext(), user.getDisplayName().toString(), Toast.LENGTH_SHORT).show();
                                             }
                                         }
                                     });

@@ -2,9 +2,13 @@ package com.example.forest;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
+
 import java.util.List;
 
 public class ReforestationEventsAdapter extends RecyclerView.Adapter<ReforestationEventsAdapter.ViewHolder> {
@@ -36,13 +40,16 @@ public class ReforestationEventsAdapter extends RecyclerView.Adapter<Reforestati
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView eventName, eventDate, eventLocation;
+        TextView eventName, eventDate, eventLocation, evnetOrganizer;
+        ImageView eventImage;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            eventName = itemView.findViewById(R.id.eventName);
-            eventDate = itemView.findViewById(R.id.eventDate);
-            eventLocation = itemView.findViewById(R.id.eventLocation);
+            eventName = itemView.findViewById(R.id.eventNameText);
+            eventDate = itemView.findViewById(R.id.eventDateText);
+            eventLocation = itemView.findViewById(R.id.eventLocationText);
+            evnetOrganizer = itemView.findViewById(R.id.eventOrganizerText);
+            eventImage = (ImageView) itemView.findViewById(R.id.eventImageUrl);
             itemView.setOnClickListener(this);
         }
 
@@ -50,6 +57,11 @@ public class ReforestationEventsAdapter extends RecyclerView.Adapter<Reforestati
             eventName.setText(event.getEventName());
             eventDate.setText(event.getEventDate());
             eventLocation.setText(event.getEventLocation());
+            evnetOrganizer.setText(event.getEventOrganizer());
+//            eventImage.setImageURI(event.getEventImage());
+            Glide.with(eventImage)
+                    .load(event.getEventImage())
+                    .into(eventImage);
         }
 
         @Override
