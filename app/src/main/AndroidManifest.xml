@@ -2,7 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name = "android.permission.VIBRATE" />
 
     <application
         android:allowBackup="true"
@@ -14,6 +18,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Forest"
         tools:targetApi="34">
+        <activity
+            android:name=".viewEvent"
+            android:exported="false" />
+        <activity
+            android:name=".Volunteer_Menu"
+            android:exported="false" />
         <activity
             android:name=".event2"
             android:exported="false" />
@@ -38,7 +48,6 @@
         <activity
             android:name=".Business"
             android:exported="false" />
-
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -48,6 +57,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <receiver android:name = ".MyNotificationPublisher" />
 
         <meta-data
             android:name="preloaded_fonts"

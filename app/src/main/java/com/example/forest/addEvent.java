@@ -41,7 +41,7 @@ public class addEvent extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_event1);
+        setContentView(R.layout.activity_addevent);
 
         eventName = findViewById(R.id.eventName);
         eventDate = findViewById(R.id.eventDate);

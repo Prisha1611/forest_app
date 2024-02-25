@@ -1,8 +1,11 @@
 package com.example.forest;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -26,6 +29,8 @@ public class Business extends AppCompatActivity implements RecycledProductsAdapt
     private List<RecycledProduct> productList;
 
     private FirebaseAuth mAuth;
+
+    private Button addProduct;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     @Override
@@ -36,6 +41,15 @@ public class Business extends AppCompatActivity implements RecycledProductsAdapt
 
         FirebaseUser user = mAuth.getCurrentUser();
         Toast.makeText(getApplicationContext(), user.getDisplayName(), Toast.LENGTH_SHORT).show();
+        addProduct = findViewById(R.id.addProductPageButton);
+
+        addProduct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), addProduct.class));
+
+            }
+        });
 
         // Initialize the list of recycled products
         productList = new ArrayList<>();

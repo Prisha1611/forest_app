@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".viewEvent">
+
+    <ImageView
+        android:id="@+id/imageViewVolMenu"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
+
+    <ImageView
+        android:id="@+id/viewEventImage"
+        android:layout_width="157dp"
+        android:layout_height="174dp"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="45dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="330dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/viewEventName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewVolMenu"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/viewEventName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="51dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginBottom="22dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/viewEventDate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/viewEventImage"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewVolMenu" />
+
+    <TextView
+        android:id="@+id/viewEventDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="140dp"
+        android:layout_marginBottom="20dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/viewEventLocation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/viewEventImage"
+        app:layout_constraintTop_toBottomOf="@+id/viewEventName" />
+
+    <TextView
+        android:id="@+id/viewEventLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="140dp"
+        android:layout_marginBottom="24dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/viewEventOrganizer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/viewEventImage"
+        app:layout_constraintTop_toBottomOf="@+id/viewEventDate" />
+
+    <TextView
+        android:id="@+id/viewEventOrganizer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginEnd="140dp"
+        android:layout_marginBottom="339dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/viewEventImage"
+        app:layout_constraintTop_toBottomOf="@+id/viewEventLocation" />
+
+    <Button
+        android:id="@+id/registerToEventButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="173dp"
+        android:layout_marginTop="212dp"
+        android:layout_marginEnd="147dp"
+        android:layout_marginBottom="66dp"
+        android:text="Register"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewEventOrganizer" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
