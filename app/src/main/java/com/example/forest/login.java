@@ -58,11 +58,15 @@ public class login extends AppCompatActivity {
 
                 int selectedId = userTypeGroup.getCheckedRadioButtonId();
                 RadioButton selectedRadioButton = findViewById(selectedId);
-//                navigateUser(selectedRadioButton);
 
                 String userType = navigateUser(selectedRadioButton);
 
-                Login(emailString,passwordString, userType);
+                if (userType != null) {
+                    Login(emailString, passwordString, userType);
+                } else {
+                    // Handle the case where no user type is selected
+                    Toast.makeText(login.this, "Please select a user type", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
@@ -92,16 +96,17 @@ public class login extends AppCompatActivity {
                                                 Log.d("User type", userType);
                                                 Log.d("HERE", "HERE");
                                                 mAuth.signOut();
-//                                                Toast.makeText(getApplicationContext(), "User does not exist", Toast.LENGTH_SHORT).show();
                                             }
                                             else{
                                                 Intent intent;
-                                                if(userType == "Volunteer"){
-
+                                                if(userType.equals("Volunteer")){
                                                     intent = new Intent(getApplicationContext(), mainpage.class);
                                                 }
-                                                else{
+                                                else if(userType.equals("NGO")){
                                                     intent = new Intent(getApplicationContext(), addEvent.class);
+                                                }
+                                                else {
+                                                    intent = new Intent(getApplicationContext(), Business.class);
                                                 }
                                                 startActivity(intent);
                                             }
@@ -114,14 +119,10 @@ public class login extends AppCompatActivity {
                                     }
                                 }
                             });
-//                            updateUI(user);
-//                            Intent intent = new Intent(getApplicationContext(), mainpage.class);
-//                            startActivity(intent);
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w("Sign Bad", "signInWithEmail:failure", task.getException());
                             Toast.makeText(getApplicationContext(), "Authentication failed.", Toast.LENGTH_SHORT).show();
-//                            updateUI(null);
                         }
                     }
                 });
@@ -132,6 +133,8 @@ public class login extends AppCompatActivity {
             return "Volunteer";
         } else if (selectedRadioButton.getId() == R.id.radioButtonNGOLogin) {
             return "NGO";
+        } else if (selectedRadioButton.getId() == R.id.radioButtonBusinessLogin) {
+            return "Business";
         } else {
             // Handle the case where neither is selected or an unexpected value is encountered
             Toast.makeText(login.this, "Please select a user type", Toast.LENGTH_SHORT).show();

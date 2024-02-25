@@ -172,6 +172,14 @@
             android:text="Volunteer"
             android:textSize="16sp" />
 
+        <RadioButton
+            android:id="@+id/radioButtonBusinessSignup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Business"
+            android:textSize="16sp" />
+
+
     </RadioGroup>
 
     <Button
