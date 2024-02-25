@@ -16,6 +16,9 @@ public class ReforestationEventsAdapter extends RecyclerView.Adapter<Reforestati
     private List<ReforestationEvent> eventList;
     private OnEventClickListener onEventClickListener;
 
+//    private String eventID;
+
+
     public ReforestationEventsAdapter(List<ReforestationEvent> eventList, OnEventClickListener onEventClickListener) {
         this.eventList = eventList;
         this.onEventClickListener = onEventClickListener;
@@ -40,15 +43,15 @@ public class ReforestationEventsAdapter extends RecyclerView.Adapter<Reforestati
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView eventName, eventDate, eventLocation, evnetOrganizer;
-        ImageView eventImage;
-
+        private TextView eventName, eventDate, eventLocation, eventOrganizer;
+        private ImageView eventImage;
+        private String eventID;
         public ViewHolder(View itemView) {
             super(itemView);
             eventName = itemView.findViewById(R.id.eventNameText);
             eventDate = itemView.findViewById(R.id.eventDateText);
             eventLocation = itemView.findViewById(R.id.eventLocationText);
-            evnetOrganizer = itemView.findViewById(R.id.eventOrganizerText);
+            eventOrganizer = itemView.findViewById(R.id.eventOrganizerText);
             eventImage = (ImageView) itemView.findViewById(R.id.eventImageUrl);
             itemView.setOnClickListener(this);
         }
@@ -57,22 +60,23 @@ public class ReforestationEventsAdapter extends RecyclerView.Adapter<Reforestati
             eventName.setText(event.getEventName());
             eventDate.setText(event.getEventDate());
             eventLocation.setText(event.getEventLocation());
-            evnetOrganizer.setText(event.getEventOrganizer());
+            eventOrganizer.setText(event.getEventOrganizer());
 //            eventImage.setImageURI(event.getEventImage());
             Glide.with(eventImage)
                     .load(event.getEventImage())
                     .into(eventImage);
+            eventID = event.getEventID();
         }
 
         @Override
         public void onClick(View view) {
             if (onEventClickListener != null) {
-                onEventClickListener.onEventClick(getAdapterPosition());
+                onEventClickListener.onEventClick(getAdapterPosition(),eventID);
             }
         }
     }
 
     public interface OnEventClickListener {
-        void onEventClick(int position);
+        void onEventClick(int position,String eventID);
     }
 }

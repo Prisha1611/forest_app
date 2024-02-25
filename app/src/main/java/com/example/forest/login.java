@@ -100,7 +100,7 @@ public class login extends AppCompatActivity {
                                             else{
                                                 Intent intent;
                                                 if(userType.equals("Volunteer")){
-                                                    intent = new Intent(getApplicationContext(), mainpage.class);
+                                                    intent = new Intent(getApplicationContext(), Volunteer_Menu.class);
                                                 }
                                                 else if(userType.equals("NGO")){
                                                     intent = new Intent(getApplicationContext(), addEvent.class);

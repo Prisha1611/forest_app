@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Volunteer_Menu">
+
+    <ImageView
+        android:id="@+id/imageViewVolMenu"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
+
+    <TextView
+        android:id="@+id/volunteer_name"
+        android:layout_width="255dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="78dp"
+        android:layout_marginTop="33dp"
+        android:layout_marginEnd="78dp"
+        android:layout_marginBottom="1dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayoutBolMenu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewVolMenu" />
+
+    <LinearLayout
+        android:id="@+id/linearLayoutBolMenu"
+        android:layout_width="409dp"
+        android:layout_height="484dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="1dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/volunteer_name">
+
+        <Button
+            android:id="@+id/gotoEventVolunteer"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:text="Events" />
+
+        <Button
+            android:id="@+id/gotoProductVolunteer"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:text="Products" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -61,8 +61,10 @@ public class mainpage extends AppCompatActivity implements ReforestationEventsAd
                                 String event_date = document.getData().get("eventDate").toString();
                                 Uri eventImage = Uri.parse(document.getData().get("eventImage").toString());
                                 String eventOrganizer = document.getData().get("eventOrganizer").toString();
+                                String eventID = document.getId().toString();
+                                Log.d("event ID", eventID);
 
-                                eventList.add(new ReforestationEvent(event_name, event_date, event_location, eventImage, eventOrganizer));
+                                eventList.add(new ReforestationEvent(event_name, event_date, event_location, eventImage, eventOrganizer,eventID));
                             }
 
                             // Create the adapter with the list of events and pass this activity as the click listener
@@ -80,7 +82,12 @@ public class mainpage extends AppCompatActivity implements ReforestationEventsAd
     }
 
     @Override
-    public void onEventClick(int position) {
+    public void onEventClick(int position, String eventID) {
         // Handle event clicks if needed
+        Log.d("EVENT POSITION", String.valueOf(position));
+        Log.d("EVENT ID", String.valueOf(eventID));
+        Intent i = new Intent(getApplicationContext(),viewEvent.class);
+        i.putExtra("eventID", eventID);
+        startActivity(i);
     }
 }
